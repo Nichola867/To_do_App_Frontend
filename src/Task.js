@@ -1,10 +1,10 @@
 import React from "react";
 
-class TaskList extends React.Component {
+class Task extends React.Component {
     render() {
         return (
-            <div className="row">
 
+            <div className="row">
                 <div className="col-lg-3">
                     <p>{this.props.dateAdded}</p>
                 </div>
@@ -24,10 +24,9 @@ class TaskList extends React.Component {
                         <div>Delete me!</div> <i class="far fa-trash-alt"></i>
                     </button>
                 </div>
-
-            </div>
+            </div>            
         )
     }
 }
 
-export default TaskList;
+export default Task;
