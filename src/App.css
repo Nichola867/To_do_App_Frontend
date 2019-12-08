@@ -1,9 +1,7 @@
 .App {
   text-align: left;
-}
-
-.App-logo {
-  height: 40vmin;
+  font-family: 'Nunito', sans-serif;
+  color:#625C66;
 }
 
 .App-header {
@@ -21,33 +19,77 @@
   color: #09d3ac;
 }
 
-button {
-  background-color: #5AE8AF;
-  border-radius: 4px;
-  text-align: center;
-  color: #304039;
-  font-size: 70%;
-}
+/* BUTTONS: */
 
-.task-button {
+.addTask-button {
   bottom: 50%;
   position: absolute;
   text-align: left;
-  }
-
-  h1 {
-    text-align: center;
-    font-family: 'Cabin Sketch', cursive;
-    font-size: 40px;
-    color: #304039;
-    margin: 20 0 0 0
+    transform: translate(-21%, 37%);
 }
+
+.TaskButton {
+  font-size: 75%;
+  padding: 3%;
+  width: 100%;
+}
+
+.buttonMargin {
+  padding: 1%;
+}
+
+
+/* HEADERS: */
+h1 {
+  text-align: center;
+  font-family: 'Cabin Sketch', cursive;
+  font-size: 40px;
+  color:#B58489;
+  background-color: white;
+  margin: 20 0 0 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0 10% 0 10%;
+}
+
+.TaskHeaders {
+  margin-bottom: 5%;
+  margin-top: 5%;
+  color:#625C66;
+  font-family: 'Cabin Sketch', cursive;
+  border-color: #625C66;
+  font-size: 20px;
+}
+
+.myTaskFont {
+  font-family: 'Cabin Sketch', cursive;
+  color:#625C66;
+  font-size: 20px;
+ }
+
+.myNextTaskBorder {
+  border-color:#625C66;
+ color: #625C66;
+}
+
+
+/* IMAGES: */
+.headerImage {
+  width: 100%;
+  padding: 0 0 1% 0;
+}
+
+@media only screen and (max-width: 767px) {
+  h1 {
+    font-size: 20px
+  }
+}
+
 
 body {
   background-color: #FFFEFA;
   font-family: 'Nunito', sans-serif;
 }
 
-.box-margin {
-  padding: 0 0 40 0;
-}
