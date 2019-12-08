@@ -14,13 +14,13 @@ class CompletedTasks extends React.Component {
                 </div>
 
                 <div className="col-2 buttonMargin">
-                    <button type="button" class="btn btn-outline-warning btn-sm TaskButton">
-                        <div> Not done!</div> <i class="far fa-check-circle"></i>
+                    <button type="button" class="btn buttonNotDone btn-sm TaskButton">
+                        <div> Not done!</div> <i class="far fa-times-circle"></i>
                     </button>
                 </div>
 
                 <div className="col-2 buttonMargin">
-                    <button type="button" class="btn btn-outline-danger btn-sm TaskButton">
+                    <button type="button" class="btn buttonDelete btn-sm TaskButton">
                         <div>Delete me!</div> <i class="far fa-trash-alt"></i>
                     </button>
                 </div>

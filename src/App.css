@@ -1,7 +1,7 @@
 .App {
   text-align: left;
   font-family: 'Nunito', sans-serif;
-  color:#625C66;
+  color: #625C66;
 }
 
 .App-header {
@@ -19,13 +19,20 @@
   color: #09d3ac;
 }
 
+body {
+  background-color: #FFFEFA;
+  font-family: 'Nunito', sans-serif;
+}
+
 /* BUTTONS: */
 
 .addTask-button {
   bottom: 50%;
   position: absolute;
   text-align: left;
-    transform: translate(-21%, 37%);
+  transform: translate(-21%, 53%);
+  background-color: #625C66;
+  border-color: #625C66;
 }
 
 .TaskButton {
@@ -38,46 +45,61 @@
   padding: 1%;
 }
 
+.buttonTaskDone {
+  background-color: #84B38F;
+}
+
+.buttonNotDone {
+  background-color: #FAE47E;
+}
+
+.buttonDelete {
+  background-color: #FA7962;
+}
 
 /* HEADERS: */
+
 h1 {
   text-align: center;
   font-family: 'Cabin Sketch', cursive;
   font-size: 40px;
-  color:#B58489;
+  color: #B58489;
   background-color: white;
   margin: 20 0 0 0;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -85%);
   padding: 0 10% 0 10%;
+  border: dotted;
 }
 
 .TaskHeaders {
   margin-bottom: 5%;
-  margin-top: 5%;
-  color:#625C66;
+  color: aliceblue;
   font-family: 'Cabin Sketch', cursive;
   border-color: #625C66;
   font-size: 20px;
+  padding: 1%;
+  background-color: darkcyan;
 }
 
 .myTaskFont {
   font-family: 'Cabin Sketch', cursive;
-  color:#625C66;
-  font-size: 20px;
- }
-
-.myNextTaskBorder {
-  border-color:#625C66;
- color: #625C66;
+  color: #625C66;
+  font-size: 25px;
 }
 
+.myNextTask {
+  border-color: #625C66;
+  color: #0B2066;
+}
 
 /* IMAGES: */
+
 .headerImage {
   width: 100%;
+  height: 90%;
   padding: 0 0 1% 0;
 }
 
@@ -85,11 +107,5 @@ h1 {
   h1 {
     font-size: 20px
   }
-}
-
-
-body {
-  background-color: #FFFEFA;
-  font-family: 'Nunito', sans-serif;
 }
 

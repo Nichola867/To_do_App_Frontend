@@ -7,8 +7,8 @@ class Header extends React.Component {
 
                 <div className="row" >
                     < div className="col-12">
-                        <img className = "headerImage" src="/images/feathers.jpg" />
-                        <h1>    My to do list    </h1>
+                        <img className = "headerImage" src="feathersCrop.jpg" alt=""/>
+                        <h1> My to do list </h1>
                     </div>
                 </div>
 
@@ -19,3 +19,4 @@ class Header extends React.Component {
 }
 
 export default Header;
+
