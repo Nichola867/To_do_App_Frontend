@@ -8,7 +8,7 @@ class WriteTask extends React.Component {
                     <div className="col-9 ">
 
                         <div className="form-group myTaskFont">
-                            <label for="exampleFormControlTextarea1">My next task...</label>
+                            <label form="exampleFormControlTextarea1">My next task...</label>
                             <textarea className="form-control myNextTask" id="exampleFormControlTextarea1 " rows="2"> </textarea>
                         </div>
                     </div>
