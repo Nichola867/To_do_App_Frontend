@@ -26,7 +26,7 @@ body {
 
 /* BUTTONS: */
 
-.addTask-button {
+.addTaskButton {
   bottom: 50%;
   position: absolute;
   text-align: left;
@@ -34,11 +34,19 @@ body {
   background-color: #625C66;
   border-color: #625C66;
 }
+.addTaskButton:hover {
+  background-color: #625C66;
+  border-color: #625C66;
+  opacity: 80%;
+}
 
 .TaskButton {
   font-size: 75%;
   padding: 3%;
   width: 100%;
+}
+.TaskButton:hover {
+  opacity: 80%;
 }
 
 .buttonMargin {
