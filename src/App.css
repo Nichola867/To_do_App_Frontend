@@ -27,17 +27,26 @@ body {
 /* BUTTONS: */
 
 .addTaskButton {
+  width: 90px;
   bottom: 50%;
   position: absolute;
-  text-align: left;
-  transform: translate(-21%, 53%);
-  background-color: #625C66;
+  transform: translate(-20px, 12px);
+  text-align: center;
+  background-color: rgb(166, 161, 172);
   border-color: #625C66;
+  box-shadow: 0 5px #999;
 }
-.addTaskButton:hover {
-  background-color: #625C66;
-  border-color: #625C66;
+
+.addTaskButton:hover:after {
   opacity: 80%;
+  content: ' \00bb';
+  right: 0;
+  text-align: left;
+}
+
+.addTaskButton:active {
+  box-shadow: 0 5px #666;
+  transform: translate(-22px, 18px);
 }
 
 .TaskButton {
@@ -45,6 +54,7 @@ body {
   padding: 3%;
   width: 100%;
 }
+
 .TaskButton:hover {
   opacity: 80%;
 }
@@ -84,6 +94,7 @@ h1 {
 
 .TaskHeaders {
   margin-bottom: 5%;
+  margin-top: 5%;
   color: aliceblue;
   font-family: 'Cabin Sketch', cursive;
   border-color: #625C66;
@@ -113,7 +124,6 @@ h1 {
 
 @media only screen and (max-width: 767px) {
   h1 {
-    font-size: 20px
+    font-size: 19px
   }
 }
-

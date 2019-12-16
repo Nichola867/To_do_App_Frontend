@@ -38,13 +38,14 @@ class WriteTask extends React.Component {
                      </div>
 
                     <div className="col-3">
-                        <button className="btn btn-primary addTaskButton" type="submit">Add task</button>
+                        <button className="btn btn-sm addTaskButton" type="submit">Add task</button>
                     </div>
                 </div>
             </div>
         )
     }
 }
+
 
 
 export default WriteTask;
