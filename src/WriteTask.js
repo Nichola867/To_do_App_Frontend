@@ -3,45 +3,63 @@ import React from "react";
 class WriteTask extends React.Component {
 
     state = {
-        dateAdded: "10/12/19",
         task: "",
+        dateAdded: "2019-12-27",
     };
 
-    updateTask = event => {
-        console.log(event.target.value)
-
-         this.setState({
-        task: event.target.value
-       });
+    updateTask = e => {
+        this.setState({
+            task: e.target.value
+        });
     };
+
+    updateDate = e => {
+        this.setState({
+            dateAdded: e.target.value
+        })
+    }
+
+    writeTask = () => {
+        this.props.addNewTaskFunc(this.state.task,this.state.dateAdded)
+    }
 
     render() {
         return (
             <div className="container">
                 <div className="row box-margin">
-                    <div className="col-9 ">
+                    <div className="col-6 ">
 
                         <div className="form-group myTaskFont">
                             <label form="exampleFormControlTextarea1" >
                                 My next task...
                                 </label>
-                       
 
-                        <textarea className="form-control myNextTask"
-                            onChange={this.updateTask}
-                            value={this.state.task}
-                            id="exampleFormControlTextarea1"
-                            rows="2" >
-                        </textarea>
-
+                            <textarea className="form-control myNextTask"
+                                onChange={this.updateTask}
+                                value={this.state.task}
+                                id="exampleFormControlTextarea1"
+                                rows="2" >
+                            </textarea>
+                        </div>
                     </div>
-                     </div>
+
+
+                    <div className="col-2">
+                        <input
+                            type="date"
+                            clasName="form-control"
+                            value={this.state.dateAdded}
+                            onchange={this.updateDate} />
+                    </div>
 
                     <div className="col-3">
-                        <button className="btn btn-sm addTaskButton" type="submit">Add task</button>
+                        <button className="btn btn-sm addTaskButton"
+                            onClick={this.writeTask}>
+                            Add task</button>
                     </div>
                 </div>
-            </div>
+
+            </div >
         )
     }
 }
