@@ -20,46 +20,51 @@ class WriteTask extends React.Component {
     }
 
     writeTask = () => {
-        this.props.addNewTaskFunc(this.state.task,this.state.dateAdded)
+        this.props.addNewTaskFunc(this.state.task, this.state.dateAdded)
     }
 
     render() {
         return (
             <div className="container">
-                <div className="row box-margin">
-                    <div className="col-6 ">
-
+                <div className="row">
+                    <div className="col-6">
                         <div className="form-group myTaskFont">
                             <label form="exampleFormControlTextarea1" >
                                 My next task...
                                 </label>
-
-                            <textarea className="form-control myNextTask"
-                                onChange={this.updateTask}
-                                value={this.state.task}
-                                id="exampleFormControlTextarea1"
-                                rows="2" >
-                            </textarea>
                         </div>
+                    </div>
+                </div>
+
+
+                <div className="row">
+                    <div className="col-6">
+                        <textarea className="form-control myNextTask"
+                            onChange={this.updateTask}
+                            value={this.state.task}
+                            id="exampleFormControlTextarea1"
+                            rows="2" >
+                        </textarea>
                     </div>
 
 
                     <div className="col-2">
                         <input
                             type="date"
-                            clasName="form-control"
+                            className="form-control dateBox"
                             value={this.state.dateAdded}
                             onChange={this.updateDate} />
                     </div>
 
                     <div className="col-3">
-                        <button className="btn btn-sm addTaskButton"
+                        <button className="btn btn-sm buttonAdd"
                             onClick={this.writeTask}>
                             Add task</button>
                     </div>
                 </div>
+            </div>
 
-            </div >
+
         )
     }
 }

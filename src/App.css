@@ -24,6 +24,10 @@ body {
   font-family: 'Nunito', sans-serif;
 }
 
+.dateBox {
+width: inherit;
+}
+
 /* BUTTONS: */
 
 .addTaskButton {
@@ -73,6 +77,10 @@ body {
 
 .buttonDelete {
   background-color: #FA7962;
+}
+
+.buttonAdd {
+  background-color: darkcyan;
 }
 
 /* TEXT & HEADERS: */
