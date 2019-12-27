@@ -13,15 +13,25 @@ class App extends React.Component {
       { dateAdded: "03/11/19", task: "Feed the cat", completed: false, ID: uuid() },
       { dateAdded: "14/11/19", task: "Do laundry", completed: true, ID: uuid() },
       { dateAdded: "01/12/19", task: "File notes from lecture", completed: false, ID: uuid() },
-      { dateAdded: "18/11/19", task: "Put clothes away", completed: false, ID:uuid() },
+      { dateAdded: "18/11/19", task: "Put clothes away", completed: false, ID: uuid() },
       { dateAdded: "03/11/19", task: "Buy cat food", completed: true, ID: uuid() },
       { dateAdded: "01/10/19", task: "Write up notes from lecture", completed: true, ID: uuid() },
       { dateAdded: "19/11/19", task: "Buy chocolates for movie night", completed: true, ID: uuid() },
     ]
   }
 
+  //function 'deleteTask' removes any array where the ID number does not match the ID ('n') passed through
+  deleteTask = n => {
+    const filteredTasks = this.state.tasks.filter(x => {
+      return x.ID !== n;
+    })
 
-//function (addNewTask) adds a new task + date to the existing task array.
+    this.setState({
+      tasks: filteredTasks
+    })
+  }
+
+  //function 'addNewTask' adds a new task and date to the existing task array. 
   addNewTask = (xTask, yDateAdded) => {
     const newTask = {
       task: xTask,
@@ -33,7 +43,7 @@ class App extends React.Component {
     newTaskArray.push(newTask);
 
     this.setState({
-      tasks:newTaskArray
+      tasks: newTaskArray
     });
   };
 
@@ -51,7 +61,7 @@ class App extends React.Component {
     return (
       <div className="App" >
         <Header />
-        <WriteTask addNewTaskFunc = {this.addNewTask}/>
+        <WriteTask addNewTaskFunc={this.addNewTask} />
 
         <div className="container">
           <div className="row">
@@ -67,9 +77,11 @@ class App extends React.Component {
               {toDoTasks.map(n => {
                 return (
                   <Task
-                    key={n.ID}
                     dateAdded={n.dateAdded}
                     task={n.task}
+                    deleteTaskFunc={this.deleteTask}
+                    key={n.ID}
+                    ID={n.ID}
                   />
                 )
               })}
@@ -86,9 +98,11 @@ class App extends React.Component {
               {completedTasks.map(n => {
                 return (
                   <CompletedTasks
-                    key={n.ID}
                     dateAdded={n.dateAdded}
                     task={n.task}
+                    deleteTaskFunc={this.deleteTask}
+                    key={n.ID}
+                    ID={n.ID}
                   />
                 )
               })}
