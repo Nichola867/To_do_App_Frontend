@@ -6,6 +6,10 @@ class Task extends React.Component {
         this.props.deleteTaskFunc(this.props.ID);
     }
 
+    handleMove = () => {
+        this.props.taskCompleteFunc(this.props.ID);
+    }
+
     render() {
         return (
 
@@ -21,7 +25,8 @@ class Task extends React.Component {
                 <div className="col-2 buttonMargin">
                     <button
                         type="button"
-                        className="btn buttonTaskDone btn-sm TaskButton">
+                        className="btn buttonTaskDone btn-sm TaskButton"
+                        onClick = {this.handleMove}>
                         <div> Task done!</div>
                         <i className="far fa-check-circle"></i>
                     </button>

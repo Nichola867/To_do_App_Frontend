@@ -47,6 +47,24 @@ class App extends React.Component {
     });
   };
 
+  taskComplete = (xID) => {
+    const updatedTasks = this.state.tasks.map(n => {
+      if (n.ID === xID) {
+        return {
+          task:n.task,
+          dateAdded:n.dateAdded,
+          completed: true,
+          ID: n.ID
+        }
+      }
+      return n;
+    });
+
+    this.setState({
+      tasks:updatedTasks
+    });
+  };
+
 
 
   render() {
@@ -80,6 +98,7 @@ class App extends React.Component {
                     dateAdded={n.dateAdded}
                     task={n.task}
                     deleteTaskFunc={this.deleteTask}
+                    taskCompleteFunc={this.taskComplete}
                     key={n.ID}
                     ID={n.ID}
                   />
