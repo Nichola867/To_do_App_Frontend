@@ -4,7 +4,7 @@ class WriteTask extends React.Component {
 
     state = {
         task: "",
-        dateAdded: "2019-12-27",
+        dateAdded: "",
     };
 
     updateTask = e => {
@@ -49,7 +49,7 @@ class WriteTask extends React.Component {
                             type="date"
                             clasName="form-control"
                             value={this.state.dateAdded}
-                            onchange={this.updateDate} />
+                            onChange={this.updateDate} />
                     </div>
 
                     <div className="col-3">
