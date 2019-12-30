@@ -7,6 +7,11 @@ class CompletedTasks extends React.Component {
         this.props.deleteTaskFunc(this.props.ID);
     }
 
+    handleMoveToTodo = () => {
+       this.props.taskNotCompleteFunc(this.props.ID);
+    }
+
+
         render() {
         return (
 
@@ -23,7 +28,8 @@ class CompletedTasks extends React.Component {
                 <div className="col-2 buttonMargin">
                     <button
                         type="button"
-                        className="btn buttonNotDone btn-sm TaskButton">
+                        className="btn buttonNotDone btn-sm TaskButton"
+                            onClick={this.handleMoveToTodo}>
                         <div> Not done!</div>
                         <i className="far fa-times-circle"></i>
                     </button>

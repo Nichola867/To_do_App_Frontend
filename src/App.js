@@ -47,8 +47,9 @@ class App extends React.Component {
     });
   };
 
+  //function 'taskComplete' updates the task array thats in the state by setting the completed property to "true" for any task with the ID matching xID 
   taskComplete = (xID) => {
-    const updatedTasks = this.state.tasks.map(n => {
+    const updatedCompletedTasks = this.state.tasks.map(n => {
       if (n.ID === xID) {
         return {
           task:n.task,
@@ -61,9 +62,27 @@ class App extends React.Component {
     });
 
     this.setState({
-      tasks:updatedTasks
+      tasks:updatedCompletedTasks
     });
   };
+
+taskNotComplete = (yID) => {
+  const updatedNonCompletedTasks = this.state.tasks.map (n => {
+      if(n.ID === yID) {
+        return {
+          task:n.task,
+          dateAdded:n.dateAdded,
+          completed: false,
+          ID:n.ID
+        }
+      }
+      return n;
+  })
+
+  this.setState({
+    tasks:updatedNonCompletedTasks
+  });
+};
 
 
 
@@ -75,6 +94,7 @@ class App extends React.Component {
     const toDoTasks = this.state.tasks.filter(n => {
       return n.completed === false;
     });
+
 
     return (
       <div className="App" >
@@ -120,6 +140,7 @@ class App extends React.Component {
                     dateAdded={n.dateAdded}
                     task={n.task}
                     deleteTaskFunc={this.deleteTask}
+                    taskNotCompleteFunc={this.taskNotComplete}
                     key={n.ID}
                     ID={n.ID}
                   />
