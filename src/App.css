@@ -79,9 +79,17 @@ width: inherit;
   background-color: #FA7962;
 }
 
-.buttonAdd {
-  background-color: darkcyan;
+.medium {
+  font-size: 3em;
 }
+
+.enabledButton {
+  color:orange;
+}
+.disabledButton {
+  opacity: 0.35;
+}
+
 
 /* TEXT & HEADERS: */
 
@@ -133,5 +141,17 @@ h1 {
 @media only screen and (max-width: 767px) {
   h1 {
     font-size: 19px
+  }
+}
+
+
+
+.paddingSmall {
+padding: 5px
+}
+
+@media only screen and (max-width: 767px) {
+  .dateBox {
+font-size: 10px;
   }
 }

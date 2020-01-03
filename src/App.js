@@ -10,15 +10,16 @@ import './App.css';
 class App extends React.Component {
   state = {
     tasks: [
-      { dateAdded: "03/11/19", task: "Feed the cat", completed: false, ID: uuid() },
-      { dateAdded: "14/11/19", task: "Do laundry", completed: true, ID: uuid() },
-      { dateAdded: "01/12/19", task: "File notes from lecture", completed: false, ID: uuid() },
-      { dateAdded: "18/11/19", task: "Put clothes away", completed: false, ID: uuid() },
-      { dateAdded: "03/11/19", task: "Buy cat food", completed: true, ID: uuid() },
-      { dateAdded: "01/10/19", task: "Write up notes from lecture", completed: true, ID: uuid() },
-      { dateAdded: "19/11/19", task: "Buy chocolates for movie night", completed: true, ID: uuid() },
+      { dateAdded: "2019-11-02", task: "Feed the cat", completed: false, ID: uuid() },
+      { dateAdded: "2019-11-14", task: "Do laundry", completed: true, ID: uuid() },
+      { dateAdded: "2019-12-01", task: "File notes from lecture", completed: false, ID: uuid() },
+      { dateAdded: "2019-11-18", task: "Put clothes away", completed: false, ID: uuid() },
+      { dateAdded: "2019-11-03", task: "Buy cat food", completed: true, ID: uuid() },
+      { dateAdded: "2019-10-01", task: "Write up notes from lecture", completed: true, ID: uuid() },
+      { dateAdded: "2019-11-19", task: "Buy chocolates for movie night", completed: true, ID: uuid() },
     ]
   }
+
 
   //function 'deleteTask' removes any array where the ID number does not match the ID ('n') passed through
   deleteTask = n => {
