@@ -47,6 +47,7 @@ class WriteTask extends React.Component {
                         <textarea className="form-control myNextTask"
                             onChange={this.updateTask}
                             value={this.state.task}
+                            placeholder="Write your task here..."
                             id="exampleFormControlTextarea1"
                             rows="2" >
                         </textarea>
@@ -64,7 +65,6 @@ class WriteTask extends React.Component {
 
                     <div className="col-2 paddingSmall">
                         {this.state.task !== "" ?
-                            /*  Submit task! */
                             <button
                                 className="btn btn-sm enabledButton"
                                 onClick={this.writeTask} >
@@ -73,7 +73,7 @@ class WriteTask extends React.Component {
 
                             <button
                                 disabled className="btn btn-sm disabledButton">
-                                 <i className="fas fa-check-circle medium"></i>
+                                <i className="fas fa-check-circle medium"></i>
                             </button>
                         }
                     </div>

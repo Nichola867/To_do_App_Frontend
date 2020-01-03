@@ -53,8 +53,8 @@ class App extends React.Component {
     const updatedCompletedTasks = this.state.tasks.map(n => {
       if (n.ID === xID) {
         return {
-          task:n.task,
-          dateAdded:n.dateAdded,
+          task: n.task,
+          dateAdded: n.dateAdded,
           completed: true,
           ID: n.ID
         }
@@ -63,27 +63,27 @@ class App extends React.Component {
     });
 
     this.setState({
-      tasks:updatedCompletedTasks
+      tasks: updatedCompletedTasks
     });
   };
 
-taskNotComplete = (yID) => {
-  const updatedNonCompletedTasks = this.state.tasks.map (n => {
-      if(n.ID === yID) {
+  taskNotComplete = (yID) => {
+    const updatedNonCompletedTasks = this.state.tasks.map(n => {
+      if (n.ID === yID) {
         return {
-          task:n.task,
-          dateAdded:n.dateAdded,
+          task: n.task,
+          dateAdded: n.dateAdded,
           completed: false,
-          ID:n.ID
+          ID: n.ID
         }
       }
       return n;
-  })
+    })
 
-  this.setState({
-    tasks:updatedNonCompletedTasks
-  });
-};
+    this.setState({
+      tasks: updatedNonCompletedTasks
+    });
+  };
 
 
 
@@ -103,15 +103,26 @@ taskNotComplete = (yID) => {
         <WriteTask addNewTaskFunc={this.addNewTask} />
 
         <div className="container">
+
           <div className="row">
             <div className="col-12 col-lg-6">
-
               <ul className="list-group">
                 <li className="list-group-item d-flex justify-content-between align-items-center TaskHeaders">
                   <i className="fas fa-list-ul" /> <span> Tasks to do </span>
                   <span className="badge badge-light badge-pill"> {toDoTasks.length} </span>
                 </li>
               </ul>
+
+
+              <div className="row">
+                <div className="col-3 taskHeader">
+                  <p> Date Added </p>
+                </div>
+
+                <div className="col-5 taskHeader">
+                  <p>My Task </p>
+                </div>
+              </div>
 
               {toDoTasks.map(n => {
                 return (
@@ -127,6 +138,7 @@ taskNotComplete = (yID) => {
               })}
             </div>
 
+
             <div className="col-12 col-lg-6">
               <ul className="list-group">
                 <li className="list-group-item d-flex justify-content-between align-items-center TaskHeaders">
@@ -134,6 +146,16 @@ taskNotComplete = (yID) => {
                   <span className="badge badge-light badge-pill"> {completedTasks.length}</span>
                 </li>
               </ul>
+
+              <div className="row">
+                <div className="col-3 taskHeader">
+                  <p> Date Added </p>
+                </div>
+
+                <div className="col-5 taskHeader">
+                  <p>My Task </p>
+                </div>
+              </div>
 
               {completedTasks.map(n => {
                 return (

@@ -28,6 +28,15 @@ body {
 width: inherit;
 }
 
+
+.taskHeader {
+color:#625C66;
+font-weight: bold;
+text-decoration: underline;
+font-family: inherit;
+}
+
+
 /* BUTTONS: */
 
 .addTaskButton {
