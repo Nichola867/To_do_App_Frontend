@@ -4,7 +4,7 @@ class WriteTask extends React.Component {
 
     state = {
         task: "",
-        dateAdded: ""
+        dateAdded: new Date().toISOString().substr(0,10)
     };
 
     updateTask = e => {

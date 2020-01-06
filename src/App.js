@@ -90,11 +90,12 @@ class App extends React.Component {
   render() {
     const completedTasks = this.state.tasks.filter(n => {
       return n.completed === true;
-    });
+    }).sort((a,b) => a.dateAdded.localeCompare(b.dateAdded));
+    
 
     const toDoTasks = this.state.tasks.filter(n => {
       return n.completed === false;
-    });
+    }).sort((a,b) => a.dateAdded.localeCompare(b.dateAdded));
 
 
     return (
