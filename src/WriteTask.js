@@ -1,11 +1,25 @@
 import React from "react";
 
+
 class WriteTask extends React.Component {
 
     state = {
         task: "",
-        dateAdded: new Date().toISOString().substr(0,10)
+        dateAdded:
+        //set date to today's date:
+        new Date().toISOString().substr(0,10)
+        
+
+        //format date as eg 6 Jan 2020:
+       /* new Intl.DateTimeFormat("en-GB", {
+            year: "numeric",
+            month: "long",
+            day: "2-digit"
+        }).format(new Date()) */
     };
+
+    
+
 
     updateTask = e => {
         this.setState({
@@ -60,6 +74,7 @@ class WriteTask extends React.Component {
                             className="form-control dateBox"
                             value={this.state.dateAdded}
                             onChange={this.updateDate}
+                            
                         />
                     </div>
 
