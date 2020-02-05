@@ -4,11 +4,11 @@ import React from "react";
 class CompletedTasks extends React.Component {
 
     handleDelete = () => {
-        this.props.deleteTaskFunc(this.props.ID);
+        this.props.deleteTaskFunc(this.props.taskId);
     }
 
     handleMoveToTodo = () => {
-        this.props.taskNotCompleteFunc(this.props.ID);
+        this.props.taskNotCompleteFunc(this.props.taskId);
     }
 
 
@@ -22,7 +22,7 @@ class CompletedTasks extends React.Component {
                 </div>
 
                 <div className="col-5">
-                    <p>{this.props.task}</p>
+                    <p>{this.props.taskText}</p>
                 </div>
 
                 <div className="col-2 buttonMargin">

@@ -4,26 +4,16 @@ import React from "react";
 class WriteTask extends React.Component {
 
     state = {
-        task: "",
+        taskText: "",
         dateAdded:
-        //set date to today's date:
-        new Date().toISOString().substr(0,10)
-        
-
-        //format date as eg 6 Jan 2020:
-       /* new Intl.DateTimeFormat("en-GB", {
-            year: "numeric",
-            month: "long",
-            day: "2-digit"
-        }).format(new Date()) */
+            //set date to today's date:
+            new Date().toISOString().substr(0, 10)
     };
-
-    
 
 
     updateTask = e => {
         this.setState({
-            task: e.target.value
+            taskText: e.target.value
         });
     };
 
@@ -34,9 +24,9 @@ class WriteTask extends React.Component {
     }
 
     writeTask = () => {
-        this.props.addNewTaskFunc(this.state.task, this.state.dateAdded)
+        this.props.addNewTaskFunc(this.state.taskText, this.state.dateAdded)
         this.setState({
-            task: ""
+            taskText: ""
         })
     }
 
@@ -74,7 +64,7 @@ class WriteTask extends React.Component {
                             className="form-control dateBox"
                             value={this.state.dateAdded}
                             onChange={this.updateDate}
-                            
+
                         />
                     </div>
 

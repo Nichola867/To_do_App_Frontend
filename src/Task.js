@@ -3,11 +3,11 @@ import React from "react";
 class Task extends React.Component {
 
     handleDelete = () => {
-        this.props.deleteTaskFunc(this.props.ID);
+        this.props.deleteTaskFunc(this.props.taskId);
     }
 
     handleMove = () => {
-        this.props.taskCompleteFunc(this.props.ID);
+        this.props.taskCompleteFunc(this.props.taskId);
     }
 
     render() {
@@ -22,7 +22,7 @@ class Task extends React.Component {
                     </div>
 
                     <div className="col-5">
-                        <p>{this.props.task}</p>
+                        <p>{this.props.taskText}</p>
                     </div>
 
                     <div className="col-2 buttonMargin">

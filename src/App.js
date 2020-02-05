@@ -1,5 +1,6 @@
 import React from 'react';
 import uuid from "uuid/v4";
+import axios from "axios";
 import Header from "./Header";
 import WriteTask from "./WriteTask";
 import Task from "./Task";
@@ -10,21 +11,33 @@ import './App.css';
 class App extends React.Component {
   state = {
     tasks: [
-      { dateAdded: "2019-11-02", task: "Feed the cat", completed: false, ID: uuid() },
-      { dateAdded: "2019-11-14", task: "Do laundry", completed: true, ID: uuid() },
-      { dateAdded: "2019-12-01", task: "File notes from lecture", completed: false, ID: uuid() },
-      { dateAdded: "2019-11-18", task: "Put clothes away", completed: false, ID: uuid() },
-      { dateAdded: "2019-11-03", task: "Buy cat food", completed: true, ID: uuid() },
-      { dateAdded: "2019-10-01", task: "Write up notes from lecture", completed: true, ID: uuid() },
-      { dateAdded: "2019-11-19", task: "Buy chocolates for movie night", completed: true, ID: uuid() },
+      // { dateAdded: "2019-11-02", taskText: "Feed the cat", completed: false, taskId: uuid() },
+      // { dateAdded: "2019-11-14", taskText: "Do laundry", completed: true, taskId: uuid() },
+      // { dateAdded: "2019-12-01", taskText: "File notes from lecture", completed: false, taskId: uuid() },
+      // { dateAdded: "2019-11-18", taskText: "Put clothes away", completed: false, taskId: uuid() },
+      // { dateAdded: "2019-11-03", taskText: "Buy cat food", completed: true, taskId: uuid() },
+      // { dateAdded: "2019-10-01", taskText: "Write up notes from lecture", completed: true, taskId: uuid() },
+      // { dateAdded: "2019-11-19", taskText: "Buy chocolates for movie night", completed: true, taskId: uuid() },
     ]
   }
 
+  componentDidMount() {
+    axios.get("https://mylpzxt9ef.execute-api.eu-west-1.amazonaws.com/dev/todos")
+      .then((response) => {
+        this.setState({
+          tasks: response.data.todos
+        })
+      })
+      .catch((err) => {
+        console.log("could not fetch tasks", err)
+      })
+  }
 
+    //DELETE
   //function 'deleteTask' removes any array where the ID number does not match the ID ('n') passed through
   deleteTask = n => {
     const filteredTasks = this.state.tasks.filter(x => {
-      return x.ID !== n;
+      return x.taskId !== n;
     })
 
     this.setState({
@@ -32,14 +45,16 @@ class App extends React.Component {
     })
   }
 
+      //POST
   //function 'addNewTask' adds a new task and date to the existing task array. 
-  addNewTask = (xTask, yDateAdded) => {
+  addNewTask = (xtaskText, yDateAdded) => {
     const newTask = {
-      task: xTask,
+      taskText: xtaskText,
       dateAdded: yDateAdded,
-      completed: false,
-      ID: uuid()
+      taskComplete: false,
+      //taskId: uuid()
     };
+
     const newTaskArray = this.state.tasks.slice();
     newTaskArray.push(newTask);
 
@@ -48,15 +63,17 @@ class App extends React.Component {
     });
   };
 
+
+  //PUT
   //function 'taskComplete' updates the task array thats in the state by setting the completed property to "true" for any task with the ID matching xID 
   taskComplete = (xID) => {
     const updatedCompletedTasks = this.state.tasks.map(n => {
       if (n.ID === xID) {
         return {
-          task: n.task,
+          taskText: n.taskText,
           dateAdded: n.dateAdded,
-          completed: true,
-          ID: n.ID
+          taskComplete: true,
+          taskId: n.ID
         }
       }
       return n;
@@ -69,12 +86,12 @@ class App extends React.Component {
 
   taskNotComplete = (yID) => {
     const updatedNonCompletedTasks = this.state.tasks.map(n => {
-      if (n.ID === yID) {
+      if (n.userId === yID) {
         return {
-          task: n.task,
+          taskText: n.taskText,
           dateAdded: n.dateAdded,
-          completed: false,
-          ID: n.ID
+          taskComplete: false,
+          taskId: n.taskId
         }
       }
       return n;
@@ -88,14 +105,16 @@ class App extends React.Component {
 
 
   render() {
+
+     //changed true to 1 and false to 0 here...
     const completedTasks = this.state.tasks.filter(n => {
-      return n.completed === true;
-    }).sort((a,b) => a.dateAdded.localeCompare(b.dateAdded));
-    
+      return n.taskComplete === 1;
+    }).sort((a, b) => a.dateAdded.localeCompare(b.dateAdded));
+
 
     const toDoTasks = this.state.tasks.filter(n => {
-      return n.completed === false;
-    }).sort((a,b) => a.dateAdded.localeCompare(b.dateAdded));
+      return n.taskComplete === 0;
+    }).sort((a, b) => a.dateAdded.localeCompare(b.dateAdded));
 
 
     return (
@@ -129,11 +148,11 @@ class App extends React.Component {
                 return (
                   <Task
                     dateAdded={n.dateAdded}
-                    task={n.task}
+                    taskText={n.taskText}
                     deleteTaskFunc={this.deleteTask}
                     taskCompleteFunc={this.taskComplete}
-                    key={n.ID}
-                    ID={n.ID}
+                    key={n.taskId}
+                    taskId={n.taskId}
                   />
                 )
               })}
@@ -162,11 +181,11 @@ class App extends React.Component {
                 return (
                   <CompletedTasks
                     dateAdded={n.dateAdded}
-                    task={n.task}
+                    taskText={n.taskText}
                     deleteTaskFunc={this.deleteTask}
                     taskNotCompleteFunc={this.taskNotComplete}
-                    key={n.ID}
-                    ID={n.ID}
+                    key={n.taskId}
+                    taskId={n.taskId}
                   />
                 )
               })}
