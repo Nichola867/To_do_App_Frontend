@@ -24,7 +24,10 @@ class WriteTask extends React.Component {
     }
 
     writeTask = () => {
-        this.props.addNewTaskFunc(this.state.taskText, this.state.dateAdded)
+        this.props.addNewTaskFunc(
+            this.state.taskText,
+            this.state.dateAdded)
+
         this.setState({
             taskText: ""
         })
@@ -50,7 +53,7 @@ class WriteTask extends React.Component {
                     <div className="col-5 paddingSmall">
                         <textarea className="form-control myNextTask"
                             onChange={this.updateTask}
-                            value={this.state.task}
+                            value={this.state.taskText}
                             placeholder="Write your task here..."
                             id="exampleFormControlTextarea1"
                             rows="2" >

@@ -33,7 +33,7 @@ class App extends React.Component {
       })
   }
 
-    //DELETE
+  //DELETE
   //function 'deleteTask' removes any array where the ID number does not match the ID ('n') passed through
   deleteTask = n => {
     const filteredTasks = this.state.tasks.filter(x => {
@@ -45,23 +45,31 @@ class App extends React.Component {
     })
   }
 
-      //POST
-  //function 'addNewTask' adds a new task and date to the existing task array. 
+
+  //POST
   addNewTask = (xtaskText, yDateAdded) => {
     const newTask = {
       taskText: xtaskText,
       dateAdded: yDateAdded,
-      taskComplete: false,
+      taskComplete: false
       //taskId: uuid()
     };
 
-    const newTaskArray = this.state.tasks.slice();
-    newTaskArray.push(newTask);
+    axios.post("https://mylpzxt9ef.execute-api.eu-west-1.amazonaws.com/dev/todos", newTask)
+      .then((response) => {
+        const newTask = response.data;
+        const newTaskArray = this.state.tasks.slice();
+        newTaskArray.push(newTask);
 
-    this.setState({
-      tasks: newTaskArray
-    });
-  };
+        this.setState({
+          tasks: newTaskArray
+        })
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
 
 
   //PUT
@@ -106,15 +114,17 @@ class App extends React.Component {
 
   render() {
 
-     //changed true to 1 and false to 0 here...
-    const completedTasks = this.state.tasks.filter(n => {
-      return n.taskComplete === 1;
-    }).sort((a, b) => a.dateAdded.localeCompare(b.dateAdded));
-
-
+    
     const toDoTasks = this.state.tasks.filter(n => {
-      return n.taskComplete === 0;
+      return n.taskComplete == false;
     }).sort((a, b) => a.dateAdded.localeCompare(b.dateAdded));
+
+
+    //changed true to 1 and false to 0 here...
+    const completedTasks = this.state.tasks.filter(n => {
+      return n.taskComplete == true;
+    }).sort((a, b) => a.dateAdded.localeCompare(b.dateAdded));
+
 
 
     return (
