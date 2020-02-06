@@ -10,15 +10,7 @@ import './App.css';
 
 class App extends React.Component {
   state = {
-    tasks: [
-      // { dateAdded: "2019-11-02", taskText: "Feed the cat", completed: false, taskId: uuid() },
-      // { dateAdded: "2019-11-14", taskText: "Do laundry", completed: true, taskId: uuid() },
-      // { dateAdded: "2019-12-01", taskText: "File notes from lecture", completed: false, taskId: uuid() },
-      // { dateAdded: "2019-11-18", taskText: "Put clothes away", completed: false, taskId: uuid() },
-      // { dateAdded: "2019-11-03", taskText: "Buy cat food", completed: true, taskId: uuid() },
-      // { dateAdded: "2019-10-01", taskText: "Write up notes from lecture", completed: true, taskId: uuid() },
-      // { dateAdded: "2019-11-19", taskText: "Buy chocolates for movie night", completed: true, taskId: uuid() },
-    ]
+    tasks: []
   }
 
   componentDidMount() {
@@ -33,17 +25,28 @@ class App extends React.Component {
       })
   }
 
-  //DELETE
-  //function 'deleteTask' removes any array where the ID number does not match the ID ('n') passed through
-  deleteTask = n => {
-    const filteredTasks = this.state.tasks.filter(x => {
-      return x.taskId !== n;
-    })
 
-    this.setState({
-      tasks: filteredTasks
-    })
-  }
+
+  //DELETE
+
+  deleteTask = n => {
+    axios.delete(`https://mylpzxt9ef.execute-api.eu-west-1.amazonaws.com/dev/todos/${n}`)
+      .then((response) => {
+        const filteredTasks = this.state.tasks.filter(x => {
+          return x.taskId !== n;
+        });
+
+        this.setState({
+          tasks: filteredTasks
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+
+
 
 
   //POST
@@ -72,57 +75,79 @@ class App extends React.Component {
 
 
 
-  //PUT
-  //function 'taskComplete' updates the task array thats in the state by setting the completed property to "true" for any task with the ID matching xID 
-  taskComplete = (xID) => {
-    const updatedCompletedTasks = this.state.tasks.map(n => {
-      if (n.ID === xID) {
-        return {
-          taskText: n.taskText,
-          dateAdded: n.dateAdded,
-          taskComplete: true,
-          taskId: n.ID
-        }
-      }
-      return n;
-    });
 
-    this.setState({
-      tasks: updatedCompletedTasks
-    });
+
+
+  //PUT 
+
+  taskComplete = (xID) => {
+    axios.put(`https://mylpzxt9ef.execute-api.eu-west-1.amazonaws.com/dev/todos/${xID}`, {
+      taskComplete: true
+    })
+      .then(response => {
+        const updatedCompletedTasks = this.state.tasks.map(n => {
+          if (n.taskId === xID) {
+            return {
+              taskText: n.taskText,
+              dateAdded: n.dateAdded,
+              taskComplete: true,
+              taskId: n.ID
+            }
+          }
+          return n;
+        });
+        this.setState({
+          tasks: updatedCompletedTasks
+        });
+
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
+
+
+
 
   taskNotComplete = (yID) => {
-    const updatedNonCompletedTasks = this.state.tasks.map(n => {
-      if (n.userId === yID) {
-        return {
-          taskText: n.taskText,
-          dateAdded: n.dateAdded,
-          taskComplete: false,
-          taskId: n.taskId
-        }
-      }
-      return n;
+    axios.put(`https://mylpzxt9ef.execute-api.eu-west-1.amazonaws.com/dev/todos/${yID}`, {
+      taskComplete: false
     })
+      .then(response => {
+        const updatedNonCompletedTasks = this.state.tasks.map(n => {
+          if (n.taskId === yID) {
+            return {
+              taskText: n.taskText,
+              dateAdded: n.dateAdded,
+              taskComplete: false,
+              taskId: n.taskId
+            }
+          }
+          return n;
+        })
+        this.setState({
+          tasks: updatedNonCompletedTasks
+        });
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
 
-    this.setState({
-      tasks: updatedNonCompletedTasks
-    });
-  };
+
 
 
 
   render() {
 
-    
+
     const toDoTasks = this.state.tasks.filter(n => {
-      return n.taskComplete == false;
+      return n.taskComplete === false;
     }).sort((a, b) => a.dateAdded.localeCompare(b.dateAdded));
 
 
-    //changed true to 1 and false to 0 here...
     const completedTasks = this.state.tasks.filter(n => {
-      return n.taskComplete == true;
+      return n.taskComplete === true;
     }).sort((a, b) => a.dateAdded.localeCompare(b.dateAdded));
 
 
