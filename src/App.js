@@ -78,7 +78,7 @@ class App extends React.Component {
 
 
 
-  //PUT 
+  //PUT - not updating database to taskCOmplete = true when task done button is clicked (does move)
 
   taskComplete = (xID) => {
     axios.put(`https://mylpzxt9ef.execute-api.eu-west-1.amazonaws.com/dev/todos/${xID}`, {
