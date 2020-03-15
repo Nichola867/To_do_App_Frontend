@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 
 
 class CompletedTasks extends React.Component {
@@ -18,7 +19,7 @@ class CompletedTasks extends React.Component {
             <div className="row">
 
                 <div className="col-3">
-                    <p>{this.props.dateAdded}</p>
+                <p>{moment(this.props.dateAdded).format("Do MMM YYYY")}</p>
                 </div>
 
                 <div className="col-5">

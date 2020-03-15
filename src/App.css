@@ -139,6 +139,10 @@ h1 {
   color: #0B2066;
 }
 
+.date {
+  padding-left: 0;
+}
+
 /* IMAGES: */
 
 .headerImage {

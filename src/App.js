@@ -25,10 +25,7 @@ class App extends React.Component {
       })
   }
 
-
-
   //DELETE
-
   deleteTask = n => {
     axios.delete(`https://mylpzxt9ef.execute-api.eu-west-1.amazonaws.com/dev/todos/${n}`)
       .then((response) => {
@@ -45,17 +42,12 @@ class App extends React.Component {
       });
   };
 
-
-
-
-
   //POST
   addNewTask = (xtaskText, yDateAdded) => {
     const newTask = {
       taskText: xtaskText,
       dateAdded: yDateAdded,
       taskComplete: false
-      //taskId: uuid()
     };
 
     axios.post("https://mylpzxt9ef.execute-api.eu-west-1.amazonaws.com/dev/todos", newTask)
@@ -73,13 +65,7 @@ class App extends React.Component {
       });
   }
 
-
-
-
-
-
-  //PUT - not updating database to taskCOmplete = true when task done button is clicked (does move)
-
+  //PUT 
   taskComplete = (xID) => {
     axios.put(`https://mylpzxt9ef.execute-api.eu-west-1.amazonaws.com/dev/todos/${xID}`, {
       taskComplete: true
@@ -105,8 +91,6 @@ class App extends React.Component {
         console.log(err);
       });
   };
-
-
 
 
   taskNotComplete = (yID) => {
@@ -135,21 +119,15 @@ class App extends React.Component {
   }
 
 
-
-
-
   render() {
-
 
     const toDoTasks = this.state.tasks.filter(n => {
       return n.taskComplete === false;
     }).sort((a, b) => a.dateAdded.localeCompare(b.dateAdded));
 
-
     const completedTasks = this.state.tasks.filter(n => {
       return n.taskComplete === true;
     }).sort((a, b) => a.dateAdded.localeCompare(b.dateAdded));
-
 
 
     return (
@@ -161,13 +139,14 @@ class App extends React.Component {
 
           <div className="row">
             <div className="col-12 col-lg-6">
+
               <ul className="list-group">
                 <li className="list-group-item d-flex justify-content-between align-items-center TaskHeaders">
-                  <i className="fas fa-list-ul" /> <span> Tasks to do </span>
+                  <i className="fas fa-list-ul" /> 
+                  <span> Tasks to do </span>
                   <span className="badge badge-light badge-pill"> {toDoTasks.length} </span>
                 </li>
               </ul>
-
 
               <div className="row">
                 <div className="col-3 taskHeader">
@@ -193,11 +172,13 @@ class App extends React.Component {
               })}
             </div>
 
-
             <div className="col-12 col-lg-6">
               <ul className="list-group">
                 <li className="list-group-item d-flex justify-content-between align-items-center TaskHeaders">
-                  <i className="fas fa-tasks" /> <span> Completed tasks </span>
+                  <i className="fas fa-tasks" />
+                  <span>
+                    Completed tasks
+                  </span>
                   <span className="badge badge-light badge-pill"> {completedTasks.length}</span>
                 </li>
               </ul>
